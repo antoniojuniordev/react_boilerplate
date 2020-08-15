@@ -1,6 +1,6 @@
 import React from 'react'
 import Routes from './routes'
-import './styles/main.css'
+import './styles/tailwind.output.css'
 
 function App () {
   return (
