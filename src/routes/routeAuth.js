@@ -3,7 +3,7 @@ import { Route, Redirect } from 'react-router-dom'
 
 const token = true
 
-const AuthRoute = ({ component: Component, ...rest }) => (
+const RouteAuth = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={(props) => (token ? (
@@ -14,4 +14,4 @@ const AuthRoute = ({ component: Component, ...rest }) => (
   />
 )
 
-export default AuthRoute
+export default RouteAuth

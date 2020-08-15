@@ -1,17 +1,15 @@
 import React from 'react'
 import { createBrowserHistory } from 'history'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Switch } from 'react-router-dom'
 
-import Login from '../pages/authUser/Login'
-import NewUser from '../pages/authUser/NewUser'
+import UserRoutes from '../pages/authUser/routes'
 
 const history = createBrowserHistory()
 
 const Routes = () => (
   <BrowserRouter history={history}>
     <Switch>
-      <Route exact path='/' component={Login} />
-      <Route path='/register' component={NewUser} />
+      <UserRoutes />
     </Switch>
   </BrowserRouter>
 )
