@@ -1,17 +1,19 @@
-import React from 'react'
-import { createBrowserHistory } from 'history'
-import { BrowserRouter, Switch } from 'react-router-dom'
+import NotFound from 'components/dashboard/notFound'
 
-import UserRoutes from '../pages/authUser/routes'
+import RootPages from 'components/baseRoutes'
+import AuthRoutes from '../views/auth/routes'
+import HomeRoutes from 'views/home/routes'
 
-const history = createBrowserHistory()
-
-const Routes = () => (
-  <BrowserRouter history={history}>
-    <Switch>
-      <UserRoutes />
-    </Switch>
-  </BrowserRouter>
-)
-
-export default Routes
+export default [
+  {
+    component: RootPages,
+    routes: [
+      ...AuthRoutes,
+      ...HomeRoutes,
+      {
+        path: '*',
+        component: NotFound
+      }
+    ]
+  }
+]
