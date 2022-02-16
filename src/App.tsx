@@ -1,12 +1,12 @@
 import 'react-notifications-component/dist/theme.css';
 import Routers from 'routes';
+import { ConfigProvider } from 'antd';
+import pt_BR from 'antd/lib/locale/pt_BR';
 
 export default function App() {
-  console.log(process.env.URL);
   return (
-    <>
-      <h1>learn react {process.env.URL}</h1>
+    <ConfigProvider locale={pt_BR}>
       <Routers />
-    </>
+    </ConfigProvider>
   );
 }

@@ -1,4 +1,4 @@
-import responses from 'api/helpers/handlerResponses/responses';
+import responses from 'services/api/helpers/handlerResponses/responses';
 
 const errorsType = {
   400: 'errorBadRequest',

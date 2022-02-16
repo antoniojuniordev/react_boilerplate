@@ -1,7 +1,10 @@
 import http from './http';
 
-import { dispatchUpdate, dispatchError } from 'api/helpers/handlerResponses';
-import { interceptPromise } from 'api/helpers/handlerPromisses';
+import {
+  dispatchUpdate,
+  dispatchError,
+} from 'services/api/helpers/handlerResponses';
+import { interceptPromise } from 'services/api/helpers/handlerPromisses';
 
 export default {
   async get(url: string, reference = '') {
