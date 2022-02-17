@@ -19,6 +19,7 @@ export default {
     try {
       const resp = await interceptPromise(http.post(url, send), reference);
       if (msg) dispatchUpdate(msg);
+      console.log(11);
       return resp.data || true;
     } catch (err: any) {
       dispatchError(err.response);

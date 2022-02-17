@@ -1,26 +1,14 @@
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import './style.css';
 
 export function BaseLayout() {
   return (
-    <div>
-      <h1>Base Layout</h1>
-      <nav>
-        <ul>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-          <li>
-            <Link to='/about'>About</Link>
-          </li>
-          <li>
-            <Link to='/dashboard'>Dashboard</Link>
-          </li>
-        </ul>
-      </nav>
-
-      <hr />
-
-      <Outlet />
+    <div className='container-basic'>
+      <div className='basic'>
+        <div className='card'>
+          <Outlet />
+        </div>
+      </div>
     </div>
   );
 }

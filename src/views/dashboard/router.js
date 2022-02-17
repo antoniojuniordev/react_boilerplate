@@ -9,7 +9,7 @@ const Dashboard = lazy(() => import('./panel'));
 export default [
   {
     path: '/dashboard',
-    element: !Auth() ? <DashboardLayout /> : <Navigate to='/' />,
+    element: Auth() ? <DashboardLayout /> : <Navigate to='/' />,
     children: [
       {
         path: '',

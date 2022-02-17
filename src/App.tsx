@@ -1,4 +1,3 @@
-import 'react-notifications-component/dist/theme.css';
 import Routers from 'routes';
 import { ConfigProvider } from 'antd';
 import pt_BR from 'antd/lib/locale/pt_BR';

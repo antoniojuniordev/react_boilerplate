@@ -20,7 +20,11 @@ export function session(sessionPayload = '', url = '') {
 
 export function getSession() {
   try {
-    return JSON.parse(window.localStorage.getItem('session'));
+    const session = window.localStorage.getItem('session');
+    if (session) {
+      return JSON.parse(session);
+    }
+    throw new Error('get session error');
   } catch (error) {
     throw new Error('get session error');
   }

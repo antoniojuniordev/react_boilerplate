@@ -10,7 +10,6 @@
     "formik": "^2.2.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-notifications-component": "^3.4.1",
     "react-promise-tracker": "^2.1.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
