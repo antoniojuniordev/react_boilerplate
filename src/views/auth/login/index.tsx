@@ -1,4 +1,5 @@
 import { Col, Row, Avatar } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 import { useFormik } from 'formik';
 import { UserOutlined } from '@ant-design/icons';
@@ -17,6 +18,7 @@ export interface User {
 }
 
 export default function Login() {
+  const { t } = useTranslation();
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -69,7 +71,7 @@ export default function Login() {
 
           <Col span={24} className='mt-2'>
             <Button block type='primary' htmlType='submit' id='login'>
-              Entrar
+              {t('auth.sing')}
             </Button>
           </Col>
 
