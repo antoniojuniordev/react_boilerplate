@@ -2,7 +2,7 @@ import { Col, Row, Avatar } from 'antd';
 import { useTranslation } from 'react-i18next';
 
 import { useFormik } from 'formik';
-import { UserOutlined } from '@ant-design/icons';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 import Input from 'components/form/input';
 import InputPassword from 'components/form/inputPassword';
@@ -11,6 +11,7 @@ import google from 'assets/images/icons/google.svg';
 
 import { validationsLogin } from '../validates/validate';
 import services from '../services';
+import { useNavigate } from 'react-router-dom';
 
 export interface User {
   email: string;
@@ -19,6 +20,8 @@ export interface User {
 
 export default function Login() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -31,6 +34,7 @@ export default function Login() {
   async function onSubmit(payload: User) {
     const response = await services.login(payload, 'login');
     console.log(response);
+    navigate('dashboard');
   }
 
   return (
@@ -43,22 +47,24 @@ export default function Login() {
             </Row>
           </Col>
 
-          <Col span={24}>
+          <Col span={24} className='mt-2'>
             <Input
-              placeholder='Email'
-              label='Email'
+              tabIndex='1'
               name='email'
+              placeholder='Email'
+              prefix={<UserOutlined />}
               value={formik.values.email}
               onChange={formik.handleChange}
               error={formik.touched.email && formik.errors.email}
             ></Input>
           </Col>
 
-          <Col span={24}>
+          <Col span={24} className='mt-1'>
             <InputPassword
-              placeholder='Senha'
-              label='Senha'
+              tabIndex='2'
               name='password'
+              placeholder='Senha'
+              prefix={<LockOutlined />}
               value={formik.values.password}
               onChange={formik.handleChange}
               error={formik.touched.password && formik.errors.password}
@@ -76,9 +82,6 @@ export default function Login() {
           </Col>
 
           <Col span={24} className='text-center mt-1'>
-            Ou
-          </Col>
-          <Col span={24} className='text-center mt-1'>
             <a href='/'>
               <img
                 src={google}
@@ -88,6 +91,14 @@ export default function Login() {
                 width='40'
               />
             </a>
+          </Col>
+
+          <Col span={24} className='text-center mt-1'>
+            Ou
+          </Col>
+
+          <Col span={24} className='text-center'>
+            <a href='/'>Cadastre-se</a>
           </Col>
         </Row>
       </form>
