@@ -1,12 +1,13 @@
-import { Form, Input as InputAnt } from 'antd';
+import { Form } from 'antd';
+import MaskedInput from 'antd-mask-input';
 
-function InputPassword(props: any) {
+function InputMask({ ...props }: any) {
   return (
     <Form.Item
       validateStatus={props?.error ? 'error' : 'success'}
       label={props.label}
     >
-      <InputAnt.Password {...props} size='large' />
+      <MaskedInput {...props} size='large' />
       {props.error && (
         <div role='alert' className='ant-form-item-explain-error'>
           {props.error}
@@ -16,4 +17,4 @@ function InputPassword(props: any) {
   );
 }
 
-export default InputPassword;
+export default InputMask;

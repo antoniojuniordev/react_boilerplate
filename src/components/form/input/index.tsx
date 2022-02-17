@@ -6,7 +6,7 @@ function Input({ ...props }: any) {
       validateStatus={props?.error ? 'error' : 'success'}
       label={props.label}
     >
-      <InputAnt {...props} />
+      <InputAnt {...props} size='large' />
       {props.error && (
         <div role='alert' className='ant-form-item-explain-error'>
           {props.error}
