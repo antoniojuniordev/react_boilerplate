@@ -7,6 +7,7 @@ function Button(props: any) {
 
   return (
     <Btn
+      size='large'
       {...props}
       loading={
         promiseInProgress || (generalProgress.promiseInProgress && !props.id)

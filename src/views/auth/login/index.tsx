@@ -12,7 +12,9 @@ import google from 'assets/images/icons/google.svg';
 import { validationsLogin } from '../validates/validate';
 import services from '../services';
 import { useNavigate } from 'react-router-dom';
+import { Typography } from 'antd';
 
+const { Title } = Typography;
 export interface User {
   email: string;
   password: string;
@@ -21,7 +23,6 @@ export interface User {
 export default function Login() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -41,13 +42,14 @@ export default function Login() {
     <>
       <form onSubmit={formik.handleSubmit}>
         <Row gutter={[0, 8]} justify='end'>
-          <Col span={24}>
-            <Row justify='center'>
-              <Avatar size={70} icon={<UserOutlined />} />
-            </Row>
+          <Col span={24} className='text-center'>
+            <Avatar size={70} icon={<UserOutlined />} />
+            <Title level={3} className='mt-1'>
+              Bem Vindo
+            </Title>
           </Col>
 
-          <Col span={24} className='mt-2'>
+          <Col span={24} className='mt-1'>
             <Input
               tabIndex='1'
               name='email'
@@ -75,7 +77,7 @@ export default function Login() {
             <a href='/'>Esqueceu sua senha?</a>
           </Col>
 
-          <Col span={24} className='mt-2'>
+          <Col span={24} className='mt-1'>
             <Button block type='primary' htmlType='submit' id='login'>
               {t('auth.sing')}
             </Button>
@@ -98,7 +100,9 @@ export default function Login() {
           </Col>
 
           <Col span={24} className='text-center'>
-            <a href='/'>Cadastre-se</a>
+            <Title level={5}>
+              <a href='/'>Cadastre-se</a>
+            </Title>
           </Col>
         </Row>
       </form>
