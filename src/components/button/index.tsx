@@ -1,4 +1,3 @@
-import { Button as Btn } from 'antd';
 import { usePromiseTracker } from 'react-promise-tracker';
 
 function Button(props: any) {
@@ -6,7 +5,7 @@ function Button(props: any) {
   const generalProgress = usePromiseTracker();
 
   return (
-    <Btn
+    <button
       size='large'
       {...props}
       loading={
