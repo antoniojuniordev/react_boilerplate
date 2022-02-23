@@ -1,18 +1,21 @@
 import { usePromiseTracker } from 'react-promise-tracker';
+import LoadingButton from '@mui/lab/LoadingButton';
 
-function Button(props: any) {
+function AppButton(props: any) {
   const { promiseInProgress } = usePromiseTracker({ area: props.id });
   const generalProgress = usePromiseTracker();
 
   return (
-    <button
-      size='large'
-      {...props}
+    <LoadingButton
+      fullWidth
+      variant='contained'
       loading={
         promiseInProgress || (generalProgress.promiseInProgress && !props.id)
       }
-    />
+    >
+      {props.name}
+    </LoadingButton>
   );
 }
 
-export default Button;
+export default AppButton;
