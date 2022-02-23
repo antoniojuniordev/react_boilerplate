@@ -9,8 +9,8 @@ import InputPassword from 'components/form/inputPassword';
 import Button from 'components/button';
 import google from 'assets/images/icons/google.svg';
 
-import { validationsLogin } from '../validates/validate';
-import services from '../services';
+import { validationsLogin } from '../../validates/validate';
+import services from '../../services';
 import { useNavigate } from 'react-router-dom';
 
 export interface User {

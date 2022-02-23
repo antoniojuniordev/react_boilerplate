@@ -1,6 +1,6 @@
 import services from 'services/api';
 
-import { User } from '../login';
+import { User } from '../pages/login';
 
 export default {
   async login({ email, password }: User, reference: string) {

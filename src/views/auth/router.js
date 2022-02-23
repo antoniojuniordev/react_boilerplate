@@ -2,7 +2,7 @@ import { lazy, Suspense } from 'react';
 
 import { BaseLayout } from 'layouts/Base';
 
-const Login = lazy(() => import('./login'));
+const Login = lazy(() => import('./pages/login'));
 
 import { NoAuth } from 'routes/guards/noAuth';
 
