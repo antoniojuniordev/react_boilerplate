@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 const routerAuth = [
   '/authenticate',
   '/forgot-password',
@@ -32,8 +34,9 @@ export function getSession() {
 
 export function destroySession() {
   try {
+    const navigate = useNavigate();
     window.localStorage.clear();
-    if (window.location.pathname !== '/') window.location.href = '/';
+    navigate('/');
   } catch (error) {
     throw new Error('destroy session error');
   }
