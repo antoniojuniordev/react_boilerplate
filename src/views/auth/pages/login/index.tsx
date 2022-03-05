@@ -12,6 +12,7 @@ import google from 'assets/images/icons/google.svg';
 import { validationsLogin } from '../../validates/validate';
 import services from '../../services';
 import { useNavigate } from 'react-router-dom';
+import { setSession } from 'services/storage';
 
 export interface User {
   email: string;
@@ -33,8 +34,10 @@ export default function Login() {
 
   async function onSubmit(payload: User) {
     const response = await services.login(payload, 'login');
-    console.log(response);
-    navigate('dashboard');
+    if (response) {
+      await setSession(response.data.token);
+      navigate('/dashboard');
+    }
   }
 
   return (

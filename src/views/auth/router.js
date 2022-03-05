@@ -4,12 +4,12 @@ import { BaseLayout } from 'layouts/Base';
 
 const Login = lazy(() => import('./pages/login'));
 
-import { NoAuth } from 'routes/guards/noAuth';
+import NoAuth from 'routes/guards/NoAuth';
 
 export default [
   {
     path: '/',
-    element: NoAuth() && <BaseLayout />,
+    element: <NoAuth component={BaseLayout} />,
     children: [
       {
         path: '',

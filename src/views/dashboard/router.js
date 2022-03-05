@@ -1,16 +1,15 @@
 import { lazy, Suspense } from 'react';
-import { Navigate } from 'react-router-dom';
 
-import { Auth } from 'routes/guards/auth';
 import { DashboardLayout } from 'layouts/Dashboard';
 import User from './user/indes';
+import Auth from 'routes/guards/Auth';
 
 const Dashboard = lazy(() => import('./panel'));
 
 export default [
   {
     path: '/dashboard',
-    element: Auth() ? <DashboardLayout /> : <Navigate to='/' />,
+    element: <Auth component={DashboardLayout} />,
     children: [
       {
         path: '',
@@ -24,7 +23,7 @@ export default [
   },
   {
     path: '/user',
-    element: Auth() ? <DashboardLayout /> : <Navigate to='/' />,
+    element: <DashboardLayout />,
     children: [
       {
         path: '',

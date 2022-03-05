@@ -10,6 +10,7 @@ import { Select } from 'antd';
 
 import '../style.css';
 import Avatar from 'antd/lib/avatar/avatar';
+import { destroySession } from 'services/storage';
 
 const profile = (
   <Menu>
@@ -20,7 +21,7 @@ const profile = (
       <GroupOutlined /> Grupo de Recurso
     </Menu.Item>
     <Menu.Divider />
-    <Menu.Item key='2'>
+    <Menu.Item key='2' onClick={destroySession}>
       <LogoutOutlined /> Sair
     </Menu.Item>
   </Menu>

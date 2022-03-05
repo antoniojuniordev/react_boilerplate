@@ -1,4 +1,9 @@
+import { destroySession } from 'services/storage';
+
 export default function Dashboard() {
+  function click() {
+    destroySession();
+  }
   {
     /* <Breadcrumb style={{ margin: '16px 0' }}>
             <Breadcrumb.Item>User</Breadcrumb.Item>
@@ -11,5 +16,5 @@ export default function Dashboard() {
             Bill is a cat.
           </div> */
   }
-  return <h1>dashboard</h1>;
+  return <button onClick={click}>dashboard</button>;
 }

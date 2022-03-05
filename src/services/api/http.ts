@@ -1,16 +1,16 @@
-import Axios from 'axios';
-import { session, destroySession } from 'services/storage/localStorage';
+import Axios, { AxiosRequestConfig } from 'axios';
+import { destroySession, getSession } from 'services/storage';
 
 const http = Axios.create({
   baseURL: process.env.REACT_APP_URL,
 });
 
-http.interceptors.request.use((config: any) => {
-  const sessionObject = session('', config.url);
-  if (!sessionObject) return config;
-  const { token } = sessionObject;
+http.interceptors.request.use((config: AxiosRequestConfig) => {
+  const token = getSession();
   if (!token) return config;
-  config.headers.common.Authorization = `Bearer ${token}`;
+  if (config?.headers) {
+    config.headers = { Authorization: `Bearer ${token}` };
+  }
   return config;
 });
 
