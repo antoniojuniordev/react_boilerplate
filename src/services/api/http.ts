@@ -29,4 +29,20 @@ http.interceptors.response.use(
   }
 );
 
+let counter = 1;
+
+http.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    if (error.response.status >= 500 && counter < 3) {
+      counter++;
+      return http.request(error.config);
+    }
+    counter = 1;
+    return Promise.reject(error);
+  }
+);
+
 export default http;
