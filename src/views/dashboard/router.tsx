@@ -1,21 +1,20 @@
 import { lazy, Suspense } from 'react';
 
-import { BaseLayout } from 'core/layouts/Base';
-
-const Login = lazy(() => import('./pages/login'));
-
+import { DashboardLayout } from 'core/layouts/Dashboard';
 import NoAuth from 'core/routes/guards/NoAuth';
+
+const Dashboard = lazy(() => import('./panel'));
 
 export default [
   {
-    path: '/',
-    element: <NoAuth component={BaseLayout} />,
+    path: '/dashboard',
+    element: <NoAuth component={DashboardLayout} />,
     children: [
       {
         path: '',
         element: (
           <Suspense fallback={<>...</>}>
-            <Login />
+            <Dashboard />
           </Suspense>
         ),
       },

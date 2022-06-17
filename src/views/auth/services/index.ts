@@ -1,4 +1,4 @@
-import services from 'services/api';
+import services from 'core/services/api';
 
 import { User } from '../pages/login';
 

@@ -1,4 +1,4 @@
-import Routers from 'routes';
+import Routers from 'core/routes';
 import { ConfigProvider } from 'antd';
 import pt_BR from 'antd/lib/locale/pt_BR';
 

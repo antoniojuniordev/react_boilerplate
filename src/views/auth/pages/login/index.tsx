@@ -1,18 +1,16 @@
-import { Col, Row, Avatar } from 'antd';
+import { Col, Row } from 'antd';
 import { useTranslation } from 'react-i18next';
 
 import { useFormik } from 'formik';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
-import Input from 'components/form/input';
-import InputPassword from 'components/form/inputPassword';
-import Button from 'components/button';
-import google from 'assets/images/icons/google.svg';
+import Input from 'core/components/form/input';
+import Button from 'core/components/button';
+import google from 'core/assets/icons/google.svg';
+import logo from 'core/assets/images/logo.svg';
 
-import { validationsLogin } from '../../validates/validate';
-import services from '../../services';
 import { useNavigate } from 'react-router-dom';
-import { setSession } from 'services/storage';
+import yup from 'core/services/validates/yup';
 
 export interface User {
   email: string;
@@ -28,16 +26,20 @@ export default function Login() {
       email: '',
       password: '',
     },
-    validationSchema: validationsLogin,
+    validationSchema: yup.object().shape({
+      email: yup.string(),
+      password: yup.string(),
+    }),
     onSubmit,
   });
 
   async function onSubmit(payload: User) {
-    const response = await services.login(payload, 'login');
-    if (response) {
-      await setSession(response.data.token);
-      navigate('/dashboard');
-    }
+    navigate('/dashboard');
+    // const response = await services.login(payload, 'login');
+    // if (response) {
+    //   await setSession(response.data.token);
+    //   navigate('/dashboard');
+    // }
   }
 
   return (
@@ -46,15 +48,20 @@ export default function Login() {
         <Row gutter={[0, 8]} justify='end'>
           <Col span={24}>
             <Row justify='center'>
-              <Avatar size={70} icon={<UserOutlined />} />
+              <img
+                src={logo}
+                alt='logo'
+                className='logo'
+                height='100'
+                width='100'
+              />
             </Row>
           </Col>
 
           <Col span={24} className='mt-2'>
             <Input
-              tabIndex='1'
               name='email'
-              placeholder='Email'
+              placeholder={t('Email')}
               prefix={<UserOutlined />}
               value={formik.values.email}
               onChange={formik.handleChange}
@@ -63,24 +70,23 @@ export default function Login() {
           </Col>
 
           <Col span={24} className='mt-1'>
-            <InputPassword
-              tabIndex='2'
+            <Input
               name='password'
-              placeholder='Senha'
+              placeholder={t('Password')}
               prefix={<LockOutlined />}
               value={formik.values.password}
               onChange={formik.handleChange}
               error={formik.touched.password && formik.errors.password}
-            ></InputPassword>
+            ></Input>
           </Col>
 
           <Col span={24} className='text-end'>
-            <a href='/'>Esqueceu sua senha?</a>
+            <a href='/'>{t('Forgot your password?')}</a>
           </Col>
 
           <Col span={24} className='mt-2'>
             <Button block type='primary' htmlType='submit' id='login'>
-              {t('auth.sing')}
+              {t('Sing in')}
             </Button>
           </Col>
 
@@ -97,11 +103,11 @@ export default function Login() {
           </Col>
 
           <Col span={24} className='text-center mt-1'>
-            Ou
+            {t('Or')}
           </Col>
 
           <Col span={24} className='text-center'>
-            <a href='/'>Cadastre-se</a>
+            <a href='/'>{t('Register')}</a>
           </Col>
         </Row>
       </form>

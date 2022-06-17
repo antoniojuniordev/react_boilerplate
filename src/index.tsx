@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
-import './styles/index.css';
-import './styles/antd.css';
-import './i18n';
+import 'core/styles/index.css';
+import 'core/styles/antd.css';
+import 'core/i18n';
 
 import App from './App';
 
