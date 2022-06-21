@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
-import 'core/styles/index.css';
-import 'core/styles/antd.css';
 import 'core/i18n';
 
 import App from './App';

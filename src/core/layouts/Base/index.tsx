@@ -1,14 +1,14 @@
 import { Outlet } from 'react-router-dom';
-import './style.css';
+import * as Styled from './styles';
 
 export function BaseLayout() {
   return (
-    <div className='container-basic'>
-      <div className='basic'>
-        <div className='card'>
+    <Styled.Conteiner>
+      <Styled.CardAlign>
+        <Styled.Card>
           <Outlet />
-        </div>
-      </div>
-    </div>
+        </Styled.Card>
+      </Styled.CardAlign>
+    </Styled.Conteiner>
   );
 }

@@ -1,23 +1,38 @@
-import { Form, Input as InputAnt, InputProps } from 'antd';
+import { Controller, ControllerProps } from 'react-hook-form';
+import * as Styled from './styles';
 
-interface Props {
-  error?: string | boolean | undefined;
-  label?: string;
-}
+export type InputProps = {
+  label: string;
+  prefixName?: string;
+};
 
-function Input({ ...props }: InputProps & Props) {
+function Input({
+  control,
+  prefixName,
+  name,
+  label,
+  ...props
+}: InputProps & Omit<ControllerProps, 'render'>) {
   return (
-    <Form.Item
-      validateStatus={props?.error ? 'error' : 'success'}
-      label={props.label}
-    >
-      <InputAnt {...props} size='large' />
-      {props.error && (
-        <div role='alert' className='ant-form-item-explain-error'>
-          {props.error}
-        </div>
+    <Controller
+      {...props}
+      name={
+        prefixName ? (`${prefixName}.${name}` as `${string}.${string}`) : name
+      }
+      control={control}
+      render={({ field, fieldState }) => (
+        <>
+          <Styled.Input
+            {...props}
+            {...field}
+            // margin='normal'
+            // label={label}
+            // error={!!fieldState?.error}
+            // helperText={fieldState?.error?.message}
+          />
+        </>
       )}
-    </Form.Item>
+    />
   );
 }
 

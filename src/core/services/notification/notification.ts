@@ -1,4 +1,4 @@
-import { notification } from 'antd';
+// import { notification } from 'antd';
 
 interface Props {
   title: string;
@@ -7,9 +7,9 @@ interface Props {
 }
 
 function Notify({ title, message, type }: Props) {
-  notification[type]({
-    message: title,
-    description: message,
-  });
+  // notification[type]({
+  //   message: title,
+  //   description: message,
+  // });
 }
 export default Notify;

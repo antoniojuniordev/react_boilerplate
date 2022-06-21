@@ -1,13 +1,13 @@
-import NoFound from 'core/layouts/NoFound';
+import NotFound from 'core/layouts/NotFound';
 
-import DashboardRouter from 'views/dashboard/router';
+// import DashboardRouter from 'views/dashboard/router';
 import Auth from 'views/auth/router';
 
 export default [
-  ...DashboardRouter,
+  // ...DashboardRouter,
   ...Auth,
   {
     path: '*',
-    element: <NoFound />,
+    element: <NotFound />,
   },
 ];

@@ -1,5 +1,3 @@
-import DASHBOARD from 'core/layouts/Dashboard/i18n/pt-br';
-import PAGEDASHBOARD from 'views/dashboard/i18n/pt-br';
 import AUTH from 'views/auth/i18n/pt-br';
 
 export default {
@@ -11,8 +9,6 @@ export default {
     successMsg: 'Operação realizada com sucesso',
     alert: 'Alerta',
     alertMsg: 'Operação teve um alerta',
-    ...DASHBOARD,
-    ...PAGEDASHBOARD,
     ...AUTH,
   },
 };

@@ -1,7 +1,6 @@
 import i18n from 'core/i18n';
 
 import responses from 'core/services/notification';
-import { destroySession } from 'core/services/storage';
 
 interface Message {
   message: string[];
@@ -29,12 +28,10 @@ export function dispatchError(response: Props) {
   try {
     if (response.status === 401) {
       responses.error(i18n.t('error401'));
-      destroySession();
       return;
     }
     if (response.status === 403) {
       responses.error(i18n.t('error403'));
-      destroySession();
       return;
     }
     if (response.status === 400) {
