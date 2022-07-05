@@ -1,11 +1,11 @@
-import services from 'services/api';
+import services from 'core/services/api';
 
 import { User } from '../login';
 
 export default {
   async login({ email, password }: User, reference: string) {
     try {
-      return await services.create(
+      return await services.post(
         '/authenticate',
         { email, password },
         'Login realizado com sucesso',

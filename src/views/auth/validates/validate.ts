@@ -1,4 +1,4 @@
-import yup from 'services/validates/yup';
+import yup from 'core/services/validates/yup';
 
 export const validationsLogin = yup.object().shape({
   email: yup
