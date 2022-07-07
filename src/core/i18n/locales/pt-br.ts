@@ -1,14 +1,15 @@
 import AUTH from 'views/auth/i18n/pt-br';
 
 export default {
-  translations: {
-    error500: 'Estamos passando por instabilidade, por favor tente novamente!',
-    error401: 'Sessão expirada',
-    error403: 'Permissão negada',
-    success: 'Sucesso',
-    successMsg: 'Operação realizada com sucesso',
-    alert: 'Alerta',
-    alertMsg: 'Operação teve um alerta',
+  translation: {
+    'We are experiencing instability, please try again!':
+      'Estamos passando por instabilidade, por favor tente novamente!',
+    'Session expired': 'Sessão expirada',
+    'Permission denied': 'Permissão negada',
+    'Operation performed successfully': 'Operação realizada com sucesso',
+    'Operation had an alert': 'Operação teve um alerta',
+    Success: 'Sucesso',
+    Alert: 'Alerta',
     ...AUTH,
   },
 };

@@ -1,14 +1,15 @@
 import AUTH from 'views/auth/i18n/en-us';
 
 export default {
-  translations: {
-    error500: 'We are experiencing instability, please try again!',
-    error401: 'Session expired',
-    error403: 'Permission denied',
-    success: 'Success',
-    successMsg: 'Operation performed successfully',
-    alert: 'Alert',
-    alertMsg: 'Operation had an alert',
+  translation: {
+    'We are experiencing instability, please try again!':
+      'We are experiencing instability, please try again!',
+    'Session expired': 'Session expired',
+    'Permission denied': 'Permission denied',
+    'Operation performed successfully': 'Operation performed successfully',
+    'Operation had an alert': 'Operation had an alert',
+    Success: 'Success',
+    Alert: 'Alert',
     ...AUTH,
   },
 };

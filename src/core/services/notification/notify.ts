@@ -3,13 +3,13 @@ import toast from 'react-hot-toast';
 
 const Notify = ({ translate }: TranslateProps) => ({
   success(message: string) {
-    toast.success(translate(message));
+    return toast.success(translate(message), { duration: 90000 });
   },
   error(message: string) {
-    toast.error(translate(message));
+    return toast.error(translate(message), { duration: 90000 });
   },
   info(message: string) {
-    toast(translate(message), {
+    return toast(translate(message), {
       icon: '❕',
     });
   },

@@ -23,7 +23,8 @@ export default function Login() {
   }
 
   function noti() {
-    Notify.info('oi');
+    Notify.error('We are experiencing instability, please try again!');
+    Notify.success('We are experiencing instability, please try again!');
   }
 
   return (
