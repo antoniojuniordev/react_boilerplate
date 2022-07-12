@@ -1,7 +1,15 @@
 import { translate, TranslateProps } from 'core/i18n';
 import toast from 'react-hot-toast';
 
-const Notify = ({ translate }: TranslateProps) => ({
+export interface NotifyProps {
+  notify: {
+    success: (message: string) => void;
+    error: (message: string) => void;
+    info: (message: string) => void;
+  };
+}
+
+const notify = ({ translate }: TranslateProps) => ({
   success(message: string) {
     return toast.success(translate(message), { duration: 90000 });
   },
@@ -15,4 +23,4 @@ const Notify = ({ translate }: TranslateProps) => ({
   },
 });
 
-export default Notify({ translate });
+export default notify({ translate });

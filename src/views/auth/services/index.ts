@@ -1,16 +1,16 @@
-import services from 'core/services/api';
+import { api } from 'core/services/api';
 
 import { User } from '../login';
 
 export default {
-  async login({ email, password }: User, reference: string) {
+  async login({ email, password }: User, id: string) {
     try {
-      return await services.post(
-        '/authenticate',
-        { email, password },
-        'Login realizado com sucesso',
-        reference
-      );
+      return await api.post({
+        url: '/authenticate',
+        send: { email, password },
+        msgSuccess: 'Login realizado com sucesso',
+        id: id,
+      });
     } catch (error) {
       return false;
     }

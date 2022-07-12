@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Button from 'core/components/button';
 import Input from 'core/components/form/input';
 import { Box, Grid } from '@mui/material';
-import { Notify } from 'core/services/notification';
+import { notify } from 'core/services/notification';
 
 export interface User {
   email: string;
@@ -22,9 +22,8 @@ export default function Login() {
     navigate('dashboard');
   }
 
-  function noti() {
-    Notify.error('We are experiencing instability, please try again!');
-    Notify.success('We are experiencing instability, please try again!');
+  async function noti() {
+    const response = await services.login({ email: '', password: '' }, 'login');
   }
 
   return (

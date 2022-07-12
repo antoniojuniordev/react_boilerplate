@@ -1,2 +1,3 @@
-export { default as Notify } from './notify';
+export { default as notify } from './notify';
+export * from './notify';
 export * from './Notification';
