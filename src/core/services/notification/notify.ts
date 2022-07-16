@@ -11,7 +11,8 @@ export interface NotifyProps {
 
 const notify = ({ translate }: TranslateProps) => ({
   success(message: string) {
-    return toast.success(translate(message), { duration: 90000 });
+    if (toast) return toast.success(translate(message), { duration: 90000 });
+    return message;
   },
   error(message: string) {
     return toast.error(translate(message), { duration: 90000 });

@@ -1,13 +1,14 @@
 import { Outlet } from 'react-router-dom';
+import * as S from './styles';
 
 export function BaseLayout() {
   return (
-    <div className='container-basic'>
-      <div className='basic'>
-        <div className='card'>
+    <S.Main>
+      <S.Container>
+        <S.Card>
           <Outlet />
-        </div>
-      </div>
-    </div>
+        </S.Card>
+      </S.Container>
+    </S.Main>
   );
 }

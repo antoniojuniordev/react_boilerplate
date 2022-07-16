@@ -23,6 +23,7 @@ export default function Login() {
   }
 
   async function noti() {
+    notify.error('response_error_props');
     const response = await services.login({ email: '', password: '' }, 'login');
   }
 

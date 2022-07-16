@@ -1,15 +1,16 @@
+import typeStorage from './types';
 export interface GetSessionProps {
-  getSession: () => object;
+  getSession: <Data>() => Data;
 }
 
-export function getSession(): object {
+export function getSession<Data>(): Data {
   try {
-    const session = window.localStorage.getItem('session');
+    const session = window.localStorage.getItem(typeStorage.session);
     if (session) {
       return JSON.parse(session);
     }
-    return {};
+    return {} as Data;
   } catch (error) {
-    return {};
+    return {} as Data;
   }
 }

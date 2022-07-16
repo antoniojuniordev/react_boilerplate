@@ -1,8 +1,6 @@
-import { lazy, Suspense } from 'react';
-
 import { BaseLayout } from 'core/layouts/Base';
 
-const Login = lazy(() => import('./login'));
+import Login from './login';
 
 import { NoAuth } from 'core/routes/guards/noAuth';
 
@@ -13,11 +11,7 @@ export default [
     children: [
       {
         path: '',
-        element: (
-          <Suspense fallback={<>...</>}>
-            <Login />
-          </Suspense>
-        ),
+        element: <Login />,
       },
     ],
   },
