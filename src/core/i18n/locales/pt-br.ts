@@ -8,6 +8,9 @@ export default {
     'Permission denied': 'Permissão negada',
     'Operation performed successfully': 'Operação realizada com sucesso',
     'Operation had an alert': 'Operação teve um alerta',
+    'Fill this field to continue': 'Preencha esse campo para continuar',
+    'Fill in the field with a valid email':
+      'Preencha o campo com um e-mail válido',
     Success: 'Sucesso',
     Alert: 'Alerta',
     ...AUTH,

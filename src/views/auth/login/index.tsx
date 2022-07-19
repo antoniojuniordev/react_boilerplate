@@ -1,79 +1,79 @@
-import { useTranslation } from 'react-i18next';
-
-import { validationsLogin } from '../validates/validate';
-import services from '../services';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from 'core/components/button';
-import Input from 'core/components/form/input';
-import { Box, Grid } from '@mui/material';
-import { notify } from 'core/services/notification';
+import { Grid } from '@mui/material';
+import { Input, InputPassword, Form, yup } from 'core/components/form';
 
-export interface User {
+import services from '../services';
+export interface SignInProps {
   email: string;
   password: string;
 }
 
+const validation = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().min(8).required(),
+});
+
 export default function Login() {
   const navigate = useNavigate();
 
-  async function onSubmit(payload: User) {
+  async function onSubmit(payload: SignInProps) {
     const response = await services.login(payload, 'login');
     console.log(response);
     navigate('dashboard');
   }
 
-  async function noti() {
-    notify.error('response_error_props');
-    const response = await services.login({ email: '', password: '' }, 'login');
-  }
-
   return (
-    <>
-      <Grid>
-        <Grid item xs={11}>
-          {/* <Input
-              name='email'
-              type='email'
-              label='Email'
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
-            /> */}
-        </Grid>
-        <Grid item xs={11}>
-          {/* <Input
+    <Form<SignInProps>
+      defaultValues={{
+        email: '',
+        password: '',
+      }}
+      validations={validation}
+      onSubmit={onSubmit}
+      render={({ control }) => (
+        <Grid container justifyContent='center'>
+          <Grid xs={12} item>
+            <Input
+              required
+              fullWidth
+              label={'Email'}
+              name={'email'}
+              control={control}
+            />
+          </Grid>
+          <Grid xs={12} item>
+            <InputPassword
+              fullWidth
+              required
               name='password'
-              label='Password'
-              type='password'
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              error={formik.touched.password && Boolean(formik.errors.password)}
-              helperText={formik.touched.password && formik.errors.password}
-            /> */}
-        </Grid>
-        <Grid item xs={11}>
-          {/* <Grid container direction='row' justify='flex-end'>
-              <Grid item>
-                <Link style={{ cursor: 'pointer' }} color='inherit'>
-                  <FaLock className='mr-1' /> Esqueceu sua Senhasss?
-                </Link>
-              </Grid>
-            </Grid> */}
-        </Grid>
-        <Grid item xs={11}>
-          <Box marginTop={3}>
-            <button
-              name='Entrar'
+              label={'Senha'}
+              control={control}
+            />
+          </Grid>
+          <Grid item xs={12} sx={{ mt: 1 }} container justifyContent='flex-end'>
+            {/* <Link href='forgot-password-email' variant='body2'>
+              {t('Forgot password?')}
+            </Link> */}
+          </Grid>
+          <Grid xs={12} item>
+            <Button
               type='submit'
-              id='login'
-              onClick={() => noti()}
-            >
-              butonn
-            </button>
-          </Box>
+              id='sign-in'
+              sx={{ mt: 3, mb: 2 }}
+              name='Test'
+            />
+          </Grid>
+          {/* <Grid item xs={12} container justifyContent='center'>
+            {t('Or')}
+          </Grid> */}
+          <Grid item xs={12} sx={{ mt: 1 }} container justifyContent='center'>
+            {/* <Link href='/sign-up' variant='subtitle1'>
+              {t('Sign Up')}
+            </Link> */}
+          </Grid>
         </Grid>
-      </Grid>
-    </>
+      )}
+    />
   );
 }

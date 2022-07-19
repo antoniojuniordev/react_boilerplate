@@ -1,21 +1,41 @@
-import { usePromiseTracker } from 'react-promise-tracker';
-import LoadingButton from '@mui/lab/LoadingButton';
+import Btn, { ButtonProps } from '@mui/material/Button';
+import LoadingButton, { LoadingButtonProps } from '@mui/lab/LoadingButton';
+import { useIsLoadingPromise } from 'core/hooks';
+import { translate } from 'core/i18n';
 
-function AppButton(props: any) {
-  const { promiseInProgress } = usePromiseTracker({ area: props.id });
-  const generalProgress = usePromiseTracker();
+export type PropsButton = ButtonProps &
+  LoadingButtonProps & {
+    name: string;
+  };
+
+function Button({ name, ...props }: PropsButton) {
+  const isLoading = useIsLoadingPromise(props);
 
   return (
-    <LoadingButton
-      fullWidth
-      variant='contained'
-      loading={
-        promiseInProgress || (generalProgress.promiseInProgress && !props.id)
-      }
-    >
-      {props.name}
-    </LoadingButton>
+    <>
+      {isLoading ? (
+        <LoadingButton
+          loading={isLoading}
+          loadingIndicator='Carregando...'
+          variant='contained'
+          fullWidth
+          {...props}
+          disabled
+        >
+          {translate(name)}
+        </LoadingButton>
+      ) : (
+        <Btn
+          variant='contained'
+          fullWidth
+          {...props}
+          style={{ textTransform: 'capitalize' }}
+        >
+          {translate(name)}
+        </Btn>
+      )}
+    </>
   );
 }
 
-export default AppButton;
+export default Button;

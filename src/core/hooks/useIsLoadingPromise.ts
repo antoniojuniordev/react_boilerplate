@@ -1,11 +1,12 @@
 import { usePromiseTracker } from 'react-promise-tracker';
 
-interface PropsIsLoadingPromisse {
+interface PropsIsLoadingPromise {
   id?: string | number;
 }
-export default function useIsLoadingPromisse({
+
+export default function useIsLoadingPromise({
   id,
-}: PropsIsLoadingPromisse): boolean {
+}: PropsIsLoadingPromise): boolean {
   if (id) {
     const { promiseInProgress } = usePromiseTracker({ area: String(id) });
     return promiseInProgress;
