@@ -11,6 +11,11 @@ export default {
     'Fill this field to continue': 'Preencha esse campo para continuar',
     'Fill in the field with a valid email':
       'Preencha o campo com um e-mail válido',
+    'Fill in whole numbers': 'Preencha com números inteiros',
+    'Fill with positive numbers': 'Preencha com números positivos',
+    'Please fill in at least': 'Preencha no mínimo',
+    'Please fill a maximum of': 'Preencha no máximo',
+    characters: 'caracteres',
     Success: 'Sucesso',
     Alert: 'Alerta',
     ...AUTH,

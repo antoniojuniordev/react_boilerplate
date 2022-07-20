@@ -21,6 +21,7 @@ function Button({ name, ...props }: PropsButton) {
           fullWidth
           {...props}
           disabled
+          style={{ textTransform: 'capitalize' }}
         >
           {translate(name)}
         </LoadingButton>

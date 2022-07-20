@@ -7,13 +7,18 @@ yup.setLocale({
   },
   string: {
     email: translate('Fill in the field with a valid email'),
-    min: 'Preencha campo por completo',
-    max: 'Preencha campo por completo',
-    matches: 'Preencha com um ${label} válido.',
+    min:
+      translate('Please fill in at least') +
+      ' ${min} ' +
+      translate('characters'),
+    max:
+      translate('Please fill a maximum of') +
+      ' ${max} ' +
+      translate('characters'),
   },
   number: {
-    integer: 'Preencha com números inteiros',
-    positive: 'Preencha com números positivos',
+    integer: translate('Fill in whole numbers'),
+    positive: translate('Fill with positive numbers'),
   },
 });
 export default yup;

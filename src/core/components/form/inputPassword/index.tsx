@@ -20,11 +20,11 @@ export default function InputPassword(props: InputProps) {
         endAdornment: (
           <InputAdornment position='end'>
             <IconButton
+              edge='end'
               aria-label='toggle password visibility'
               onClick={handleClickShowPassword}
-              edge='end'
             >
-              {showPassword ? <EyeSlash size='24' /> : <Eye size='24' />}
+              {showPassword ? <EyeSlash size='22' /> : <Eye size='22' />}
             </IconButton>
           </InputAdornment>
         ),

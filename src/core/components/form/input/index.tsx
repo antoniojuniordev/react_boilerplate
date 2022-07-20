@@ -1,5 +1,6 @@
 import TextField, { TextFieldProps } from '@mui/material/TextField';
 import { Controller, ControllerProps } from 'react-hook-form';
+import { translate } from 'core/i18n';
 
 export type TypePrefixName = Omit<TextFieldProps, 'name'> & {
   prefixName?: TextFieldProps['name'];
@@ -19,13 +20,15 @@ function Input({ control, prefixName, name, label, ...props }: InputProps) {
       control={control}
       render={({ field, fieldState }) => (
         <TextField
+          {...props}
+          {...field}
           margin='normal'
           variant='outlined'
-          {...props}
-          label={label}
-          {...field}
-          error={!!fieldState?.error}
-          helperText={fieldState?.error?.message}
+          label={translate(String(label))}
+          error={Boolean(fieldState?.error)}
+          helperText={
+            fieldState?.error && translate(String(fieldState?.error?.message))
+          }
         />
       )}
     />

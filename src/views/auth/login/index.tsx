@@ -1,17 +1,18 @@
-import { Link, useNavigate } from 'react-router-dom';
-import Button from 'core/components/button';
+import { useNavigate } from 'react-router-dom';
+import Link from '@mui/material/Link';
 import { Grid } from '@mui/material';
+
+import { images } from 'core/assets';
+import { translate } from 'core/i18n';
+import Button from 'core/components/button';
 import { Input, InputPassword, Form, yup } from 'core/components/form';
 
 import services from '../services';
-export interface SignInProps {
-  email: string;
-  password: string;
-}
+import { SignInProps } from '../model/login';
 
 const validation = yup.object().shape({
   email: yup.string().email().required(),
-  password: yup.string().min(8).required(),
+  password: yup.string().max(8).required(),
 });
 
 export default function Login() {
@@ -33,11 +34,25 @@ export default function Login() {
       onSubmit={onSubmit}
       render={({ control }) => (
         <Grid container justifyContent='center'>
+          <Grid
+            xs={12}
+            item
+            container
+            justifyContent='center'
+            sx={{ mt: 2, mb: 2 }}
+          >
+            <img
+              className='mx-auto h-12 w-auto'
+              src={images.logo}
+              alt='Logo'
+              height={80}
+            />
+          </Grid>
           <Grid xs={12} item>
             <Input
               required
               fullWidth
-              label={'Email'}
+              label='Email'
               name={'email'}
               control={control}
             />
@@ -47,14 +62,14 @@ export default function Login() {
               fullWidth
               required
               name='password'
-              label={'Senha'}
+              label='Senha'
               control={control}
             />
           </Grid>
           <Grid item xs={12} sx={{ mt: 1 }} container justifyContent='flex-end'>
-            {/* <Link href='forgot-password-email' variant='body2'>
-              {t('Forgot password?')}
-            </Link> */}
+            <Link href='forgot-password-email' variant='body2' underline='none'>
+              {translate('Forgot password?')}
+            </Link>
           </Grid>
           <Grid xs={12} item>
             <Button
@@ -64,13 +79,13 @@ export default function Login() {
               name='Test'
             />
           </Grid>
-          {/* <Grid item xs={12} container justifyContent='center'>
-            {t('Or')}
-          </Grid> */}
+          <Grid item xs={12} container justifyContent='center'>
+            {translate('Or')}
+          </Grid>
           <Grid item xs={12} sx={{ mt: 1 }} container justifyContent='center'>
-            {/* <Link href='/sign-up' variant='subtitle1'>
-              {t('Sign Up')}
-            </Link> */}
+            <Link href='/sign-up' variant='subtitle1' underline='none'>
+              {translate('Sign Up')}
+            </Link>
           </Grid>
         </Grid>
       )}
