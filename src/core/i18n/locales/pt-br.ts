@@ -18,6 +18,7 @@ export default {
     characters: 'caracteres',
     Success: 'Sucesso',
     Alert: 'Alerta',
+    Or: 'Ou',
     ...AUTH,
   },
 };

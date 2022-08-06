@@ -3,6 +3,7 @@ import Input, { InputProps } from 'core/components/form/input';
 import { Eye, EyeSlash } from 'iconsax-react';
 
 import { IconButton, InputAdornment } from '@mui/material';
+import Icons from 'core/components/icons/getIcons';
 
 export default function InputPassword(props: InputProps) {
   const [showPassword, setShowPassword] = useState(false);
@@ -24,7 +25,11 @@ export default function InputPassword(props: InputProps) {
               aria-label='toggle password visibility'
               onClick={handleClickShowPassword}
             >
-              {showPassword ? <EyeSlash size='22' /> : <Eye size='22' />}
+              {showPassword ? (
+                <EyeSlash size='22' />
+              ) : (
+                <Icons size='22' name='Eye' />
+              )}
             </IconButton>
           </InputAdornment>
         ),

@@ -1,7 +1,7 @@
-import yup from 'core/services/validates/yup';
 import { useForm, UseFormProps, UseFormReturn } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ForwardedRef, forwardRef, Ref, useImperativeHandle } from 'react';
+import yup from '../yup';
 
 export interface PropsForm<T> extends UseFormProps {
   render: (props: UseFormReturn) => JSX.Element;

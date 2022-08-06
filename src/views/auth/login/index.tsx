@@ -43,7 +43,7 @@ export default function Login() {
           >
             <img
               className='mx-auto h-12 w-auto'
-              src={images.logo}
+              src={images.logo.default}
               alt='Logo'
               height={80}
             />
@@ -62,7 +62,7 @@ export default function Login() {
               fullWidth
               required
               name='password'
-              label='Senha'
+              label='Password'
               control={control}
             />
           </Grid>
@@ -76,7 +76,7 @@ export default function Login() {
               type='submit'
               id='sign-in'
               sx={{ mt: 3, mb: 2 }}
-              name='Test'
+              name='Sign In'
             />
           </Grid>
           <Grid item xs={12} container justifyContent='center'>
