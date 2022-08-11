@@ -1,6 +1,4 @@
-import { Box, SvgIcon } from '@mui/material';
-import { icons, images } from 'core/assets';
-import { Image } from 'core/components';
+import Icons from 'core/components/icons/getIcons';
 
 export interface PropsSideBarConfig {
   title: string;
@@ -10,35 +8,11 @@ export interface PropsSideBarConfig {
   children?: Array<PropsSideBarConfig>;
 }
 
-function getIcon(component: typeof SvgIcon) {
-  return <Box component={component} width={22} height={22} />;
-}
-
 const sidebarConfig: Array<PropsSideBarConfig> = [
   {
     title: 'Início',
     path: '/dashboard',
-    icon: getIcon(icons.home),
-  },
-  {
-    title: 'Usuários',
-    path: '/users',
-    icon: getIcon(icons.person),
-  },
-  {
-    title: 'Serviços',
-    path: '/services',
-    icon: getIcon(icons.designServices),
-  },
-  {
-    title: 'Especialidade',
-    path: '/specialty',
-    icon: getIcon(icons.diviceHub),
-  },
-  {
-    title: 'Departamentos',
-    path: '/departments',
-    icon: Image({ src: images.departments, sx: { width: 22, height: 22 } }),
+    icon: <Icons size='22' name='Eye' />,
   },
 ];
 

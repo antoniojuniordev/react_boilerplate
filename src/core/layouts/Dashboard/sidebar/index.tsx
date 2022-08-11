@@ -8,7 +8,7 @@ import {
   List,
   Toolbar,
 } from '@mui/material';
-import { Image, NavSection } from 'core/components';
+// import { Image, NavSection } from 'core/components';
 import SidebarConfig from './sidebarConfig';
 
 export const DRAWER_WIDTH = 240;
@@ -57,16 +57,16 @@ export function SideBar({ open, onCloseSidebar }: PropsSideBar) {
           <Grid item sm>
             <Grid container justifyContent='center'>
               <Grid item>
-                <Image
+                {/* <Image
                   sx={{ width: open ? 120 : 0 }}
                   src={system.logoTextRow}
-                />
+                /> */}
               </Grid>
             </Grid>
           </Grid>
           <Grid item>
             <IconButton onClick={onCloseSidebar}>
-              <icons.chevronLeft />
+              {/* <icons.chevronLeft /> */}
             </IconButton>
           </Grid>
         </Grid>
@@ -75,13 +75,13 @@ export function SideBar({ open, onCloseSidebar }: PropsSideBar) {
       {!open && (
         <Grid container justifyContent='center' sx={{ p: 1 }}>
           <Grid item>
-            <Image sx={{ width: 30 }} src={system.logo} />
+            {/* <Image sx={{ width: 30 }} src={system.logo} /> */}
           </Grid>
         </Grid>
       )}
       <Divider />
       <List component='nav'>
-        <NavSection navConfig={SidebarConfig} />
+        {/* <NavSection navConfig={SidebarConfig} /> */}
       </List>
     </Drawer>
   );

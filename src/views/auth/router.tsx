@@ -1,10 +1,11 @@
 import { BaseLayout } from 'core/layouts/Base';
 
-import Login from './login';
+import { Login } from './login';
 
 import { NoAuth } from 'core/routes/guards/noAuth';
+import { PropsRouter } from 'core/routes/routes';
 
-export default [
+const AuthRouter: Array<PropsRouter> = [
   {
     path: '/',
     element: NoAuth() && <BaseLayout />,
@@ -16,3 +17,5 @@ export default [
     ],
   },
 ];
+
+export default AuthRouter;

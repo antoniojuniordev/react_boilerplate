@@ -1,16 +1,10 @@
-import React from 'react';
 import { styled } from '@mui/material/styles';
-import { Toolbar, IconButton, Typography } from '@mui/material';
-import { icons } from 'core/assets';
+import { Toolbar, IconButton } from '@mui/material';
 
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import AccountPopover from '../account-propover';
+// import AccountPopover from '../account-propover';
 import { DRAWER_WIDTH } from '../sidebar';
-import useGetRouteName from 'core/utils/hooks/useGetRouteName';
-
-// ----------------------------------------------------------------------
-
-// ----------------------------------------------------------------------
+import Icons from 'core/components/icons/getIcons';
 export interface PropsNavBar {
   onOpenSidebar: () => void;
   open: boolean;
@@ -39,15 +33,9 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 export default function NavBar({ onOpenSidebar, open, ...props }: PropsNavBar) {
-  const routeName = useGetRouteName();
-
   return (
     <AppBar position='absolute' open={open} {...props}>
-      <Toolbar
-        sx={{
-          pr: '24px', // keep right padding when drawer closed
-        }}
-      >
+      <Toolbar sx={{ pr: '24px' }}>
         <IconButton
           edge='start'
           color='inherit'
@@ -58,18 +46,9 @@ export default function NavBar({ onOpenSidebar, open, ...props }: PropsNavBar) {
             ...(open && { display: 'none' }),
           }}
         >
-          <icons.menu />
+          <Icons size='22' name='HambergerMenu' />
         </IconButton>
-        <Typography
-          component='h1'
-          variant='h6'
-          color='inherit'
-          noWrap
-          sx={{ flexGrow: 1 }}
-        >
-          {routeName}
-        </Typography>
-        <AccountPopover />
+        {/* <AccountPopover /> */}
       </Toolbar>
     </AppBar>
   );

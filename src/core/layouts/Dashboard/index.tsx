@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import NavBar from './navbar';
-import { DRAWER_WIDTH, DRAWER_CLOSED_WIDTH, SideBar } from './sidebar';
+// import { DRAWER_WIDTH, DRAWER_CLOSED_WIDTH, SideBar } from './sidebar';
 
 import * as React from 'react';
 import Grid from '@mui/material/Grid';
@@ -26,7 +26,7 @@ const MainStyle = styled('div')<Pick<PropsDashboardLayout, 'open'>>(
     flexGrow: 1,
     overflow: 'auto',
     minHeight: '100vh',
-    minWidth: `calc(100vw - ${open ? DRAWER_WIDTH : DRAWER_CLOSED_WIDTH}px)`,
+    // minWidth: `calc(100vw - ${open ? DRAWER_WIDTH : DRAWER_CLOSED_WIDTH}px)`,
     transitionTimingFunction: 'linear!important',
     transition: open ? 'none!important' : 'all 0.050s!important',
     backgroundColor:
@@ -46,7 +46,7 @@ const MainStyle = styled('div')<Pick<PropsDashboardLayout, 'open'>>(
   })
 );
 
-const DashboardLayout: React.FC = () => {
+export const DashboardLayout: React.FC = () => {
   const [open, setOpen] = useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -55,7 +55,7 @@ const DashboardLayout: React.FC = () => {
   return (
     <RootStyle>
       <NavBar onOpenSidebar={toggleDrawer} open={open} />
-      <SideBar open={open} onCloseSidebar={toggleDrawer} />
+      {/* <SideBar open={open} onCloseSidebar={toggleDrawer} /> */}
       <RootStyle>
         <MainStyle open={open}>
           <Grid container>
@@ -68,5 +68,3 @@ const DashboardLayout: React.FC = () => {
     </RootStyle>
   );
 };
-
-export default DashboardLayout;

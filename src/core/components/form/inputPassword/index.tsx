@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Input, { InputProps } from 'core/components/form/input';
-import { Eye, EyeSlash } from 'iconsax-react';
 
 import { IconButton, InputAdornment } from '@mui/material';
 import Icons from 'core/components/icons/getIcons';
@@ -26,7 +25,7 @@ export default function InputPassword(props: InputProps) {
               onClick={handleClickShowPassword}
             >
               {showPassword ? (
-                <EyeSlash size='22' />
+                <Icons size='22' name='EyeSlash' />
               ) : (
                 <Icons size='22' name='Eye' />
               )}

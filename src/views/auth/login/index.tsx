@@ -15,7 +15,7 @@ const validation = yup.object().shape({
   password: yup.string().max(8).required(),
 });
 
-export default function Login() {
+export function Login() {
   const navigate = useNavigate();
 
   async function onSubmit(payload: SignInProps) {
@@ -39,13 +39,13 @@ export default function Login() {
             item
             container
             justifyContent='center'
-            sx={{ mt: 2, mb: 2 }}
+            sx={{ mt: 1, mb: 1 }}
           >
             <img
               className='mx-auto h-12 w-auto'
               src={images.logo.default}
               alt='Logo'
-              height={80}
+              height={120}
             />
           </Grid>
           <Grid xs={12} item>
@@ -74,7 +74,7 @@ export default function Login() {
           <Grid xs={12} item>
             <Button
               type='submit'
-              id='sign-in'
+              id='login'
               sx={{ mt: 3, mb: 2 }}
               name='Sign In'
             />
