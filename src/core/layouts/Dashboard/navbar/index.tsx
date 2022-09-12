@@ -1,8 +1,8 @@
 import { styled } from '@mui/material/styles';
-import { Toolbar, IconButton } from '@mui/material';
+import { Toolbar, IconButton, Grid } from '@mui/material';
 
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-// import AccountPopover from '../account-propover';
+import AccountPopover from '../account-propover';
 import { DRAWER_WIDTH } from '../sidebar';
 import Icons from 'core/components/icons/getIcons';
 export interface PropsNavBar {
@@ -35,20 +35,31 @@ const AppBar = styled(MuiAppBar, {
 export default function NavBar({ onOpenSidebar, open, ...props }: PropsNavBar) {
   return (
     <AppBar position='absolute' open={open} {...props}>
-      <Toolbar sx={{ pr: '24px' }}>
-        <IconButton
-          edge='start'
-          color='inherit'
-          aria-label='open drawer'
-          onClick={onOpenSidebar}
-          sx={{
-            marginRight: '36px',
-            ...(open && { display: 'none' }),
-          }}
+      <Toolbar>
+        <Grid
+          container
+          spacing={2}
+          alignItems='center'
+          justifyContent='space-between'
         >
-          <Icons size='22' name='HambergerMenu' />
-        </IconButton>
-        {/* <AccountPopover /> */}
+          <Grid item xs={8}>
+            <IconButton
+              edge='start'
+              color='inherit'
+              aria-label='open drawer'
+              onClick={onOpenSidebar}
+              sx={{
+                marginRight: '36px',
+                ...(open && { display: 'none' }),
+              }}
+            >
+              <Icons size='22' name='HambergerMenu' />
+            </IconButton>
+          </Grid>
+          <Grid item xs={4} container justifyContent='flex-end'>
+            <AccountPopover />
+          </Grid>
+        </Grid>
       </Toolbar>
     </AppBar>
   );

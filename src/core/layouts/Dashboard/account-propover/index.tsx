@@ -1,23 +1,24 @@
 import React, { useRef, useState } from 'react';
-
 import { Link as RouterLink } from 'react-router-dom';
-import { icons } from 'core/assets';
 
-import { Box, MenuItem, IconButton } from '@mui/material';
-// components
+import {
+  MenuItem,
+  IconButton,
+  Menu,
+  ListItemIcon,
+  Divider,
+} from '@mui/material';
 
-import { MenuPopover } from 'core/components';
-import { useSession } from 'views/auth/hooks';
+import Icons from 'core/components/icons/getIcons';
 
 export interface PropsMenuOptions {
   label: string;
-  icon: React.FC;
+  icon: React.ReactElement;
   onClick?: () => void;
   to: string;
 }
 
 export default function AccountPopover() {
-  const session = useSession();
   const anchorRef = useRef(null);
   const [open, setOpen] = useState<boolean>(false);
 
@@ -28,27 +29,25 @@ export default function AccountPopover() {
     setOpen(false);
   };
 
-  // ----------------------------------------------------------------------
-
   const MENU_OPTIONS: Array<PropsMenuOptions> = [
     {
       label: 'Perfil',
-      icon: icons.accountCircle,
+      icon: <Icons name='User' size='22' />,
       to: '/',
     },
   ];
 
-  // ----------------------------------------------------------------------
   return (
     <>
       <IconButton color='inherit' ref={anchorRef} onClick={handleOpen}>
-        <icons.accountCircle />
+        <Icons name='ProfileCircle' size='38' />
       </IconButton>
-      <MenuPopover
+      <Menu
         open={open}
-        onClose={handleClose}
-        anchorEl={anchorRef.current}
         sx={{ sx: { width: 220 } }}
+        anchorEl={anchorRef.current}
+        onClose={handleClose}
+        onClick={handleClose}
       >
         {MENU_OPTIONS.map((option) => (
           <MenuItem
@@ -61,34 +60,25 @@ export default function AccountPopover() {
             sx={{ typography: 'body2', py: 1, px: 2.5 }}
             {...option}
           >
-            <Box
-              component={option.icon}
-              sx={{
-                mr: 2,
-                width: 24,
-                height: 24,
-              }}
-            />
-
+            <ListItemIcon>{option.icon}</ListItemIcon>
             {option.label}
           </MenuItem>
         ))}
 
+        <Divider />
+
         <MenuItem
+          onClick={() => {
+            handleClose();
+          }}
           sx={{ typography: 'body2', py: 1, px: 2.5 }}
-          onClick={() => session.signOutUser()}
         >
-          <Box
-            component={icons.logout}
-            sx={{
-              mr: 2,
-              width: 24,
-              height: 24,
-            }}
-          />
+          <ListItemIcon>
+            <Icons name='Logout' size='22' />
+          </ListItemIcon>
           Logout
         </MenuItem>
-      </MenuPopover>
+      </Menu>
     </>
   );
 }
