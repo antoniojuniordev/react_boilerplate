@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 
 import Icons from 'core/components/icons/getIcons';
+import { destroySession } from 'core/services/storage';
 
 export interface PropsMenuOptions {
   label: string;
@@ -25,9 +26,14 @@ export default function AccountPopover() {
   const handleOpen = () => {
     setOpen(true);
   };
+
   const handleClose = () => {
     setOpen(false);
   };
+
+  function click() {
+    destroySession();
+  }
 
   const MENU_OPTIONS: Array<PropsMenuOptions> = [
     {
@@ -70,6 +76,7 @@ export default function AccountPopover() {
         <MenuItem
           onClick={() => {
             handleClose();
+            click();
           }}
           sx={{ typography: 'body2', py: 1, px: 2.5 }}
         >

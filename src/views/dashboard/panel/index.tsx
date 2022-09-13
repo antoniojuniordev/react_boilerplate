@@ -1,9 +1,4 @@
-import { destroySession } from 'core/services/storage';
-
 export function Panel() {
-  function click() {
-    destroySession();
-  }
   {
     /* <Breadcrumb style={{ margin: '16px 0' }}>
             <Breadcrumb.Item>User</Breadcrumb.Item>
@@ -16,5 +11,5 @@ export function Panel() {
             Bill is a cat.
           </div> */
   }
-  return <button onClick={click}>dashboard</button>;
+  return <button>dashboard</button>;
 }

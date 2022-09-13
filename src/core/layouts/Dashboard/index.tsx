@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
-import NavBar from './navbar';
-// import { DRAWER_WIDTH, DRAWER_CLOSED_WIDTH, SideBar } from './sidebar';
 
-import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import { SideBar } from './sidebar';
+import NavBar from './navbar';
 
 const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 92;
@@ -27,7 +25,6 @@ const MainStyle = styled('div')<Pick<PropsDashboardLayout, 'open'>>(
     flexGrow: 1,
     overflow: 'auto',
     minHeight: '100vh',
-    // minWidth: `calc(100vw - ${open ? DRAWER_WIDTH : DRAWER_CLOSED_WIDTH}px)`,
     transitionTimingFunction: 'linear!important',
     transition: open ? 'none!important' : 'all 0.050s!important',
     backgroundColor:
@@ -57,15 +54,13 @@ export const DashboardLayout: React.FC = () => {
     <RootStyle>
       <NavBar onOpenSidebar={toggleDrawer} open={open} />
       <SideBar open={open} onCloseSidebar={toggleDrawer} />
-      <RootStyle>
-        <MainStyle open={open}>
-          <Grid container>
-            <Grid item xs={12}>
-              <Outlet />
-            </Grid>
+      <MainStyle open={open}>
+        <Grid container>
+          <Grid item xs={12}>
+            <Outlet />
           </Grid>
-        </MainStyle>
-      </RootStyle>
+        </Grid>
+      </MainStyle>
     </RootStyle>
   );
 };

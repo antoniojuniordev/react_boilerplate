@@ -2,9 +2,9 @@ import { styled } from '@mui/material/styles';
 import { Toolbar, IconButton, Grid } from '@mui/material';
 
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import Icons from 'core/components/icons/getIcons';
 import AccountPopover from '../account-propover';
 import { DRAWER_WIDTH } from '../sidebar';
-import Icons from 'core/components/icons/getIcons';
 export interface PropsNavBar {
   onOpenSidebar: () => void;
   open: boolean;
