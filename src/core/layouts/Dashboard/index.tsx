@@ -6,6 +6,7 @@ import NavBar from './navbar';
 
 import * as React from 'react';
 import Grid from '@mui/material/Grid';
+import { SideBar } from './sidebar';
 
 const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 92;
@@ -55,7 +56,7 @@ export const DashboardLayout: React.FC = () => {
   return (
     <RootStyle>
       <NavBar onOpenSidebar={toggleDrawer} open={open} />
-      {/* <SideBar open={open} onCloseSidebar={toggleDrawer} /> */}
+      <SideBar open={open} onCloseSidebar={toggleDrawer} />
       <RootStyle>
         <MainStyle open={open}>
           <Grid container>

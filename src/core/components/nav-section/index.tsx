@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-// material
 import {
   List,
   Collapse,
@@ -9,11 +8,15 @@ import {
   ListItemButton,
   ListItemButtonProps,
 } from '@mui/material';
-import { PropsSideBarConfig } from 'core/constants/sidebarConfig';
-import { generateUniqKey } from 'core/utils';
-import { icons } from 'core/assets';
+import Icons from 'core/components/icons/getIcons';
 
-// ----------------------------------------------------------------------
+interface PropsSideBarConfig {
+  title: string;
+  icon?: JSX.Element;
+  path: string;
+  info?: string;
+  children?: Array<PropsSideBarConfig>;
+}
 
 function NavItem({
   icon,
@@ -50,7 +53,12 @@ function NavItem({
     <ListItemButton {...others} onClick={() => onClick && onClick()}>
       {icon && <ListItemIcon>{icon}</ListItemIcon>}
       <ListItemText primary={title} disableTypography={!!isActive} />
-      {hasChildren && (open ? <icons.expandLess /> : <icons.expandMore />)}
+      {hasChildren &&
+        (open ? (
+          <Icons size='22' name='ArrowCircleUp' color='#637381' />
+        ) : (
+          <Icons size='22' name='ArrowCircleDown' color='#637381' />
+        ))}
     </ListItemButton>
   );
 }
@@ -78,9 +86,8 @@ function ListItem({
 
   if (children) {
     return (
-      <React.Fragment key={generateUniqKey()}>
+      <React.Fragment>
         <NavItem
-          key={generateUniqKey()}
           onClick={handleOpen}
           isActive={isActiveRoot || isActiveChildren}
           open={open}
@@ -91,7 +98,7 @@ function ListItem({
 
         <Collapse in={open} timeout='auto' unmountOnExit>
           <List component='div' disablePadding>
-            {children.map((item) => {
+            {children.map((item, index) => {
               const { title, path, icon } = item;
               const isActiveSub = active(path);
 
@@ -99,7 +106,7 @@ function ListItem({
                 <NavItem
                   sx={{ pl: 4 }}
                   title={title}
-                  key={generateUniqKey()}
+                  key={index}
                   icon={icon}
                   to={path}
                   isActive={isActiveSub}
@@ -113,13 +120,7 @@ function ListItem({
   }
 
   return (
-    <NavItem
-      title={title}
-      isActive={isActiveRoot}
-      key={generateUniqKey()}
-      icon={icon}
-      to={path}
-    />
+    <NavItem title={title} isActive={isActiveRoot} icon={icon} to={path} />
   );
 }
 
@@ -137,13 +138,8 @@ export default function NavSection({
 
   return (
     <>
-      {navConfig.map((item) => (
-        <ListItem
-          {...others}
-          key={generateUniqKey()}
-          active={match}
-          item={item}
-        />
+      {navConfig.map((item, index) => (
+        <ListItem key={index} {...others} active={match} item={item} />
       ))}
     </>
   );

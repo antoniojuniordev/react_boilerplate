@@ -45,7 +45,7 @@ export function Login() {
               className='mx-auto h-12 w-auto'
               src={images.logo.default}
               alt='Logo'
-              height={120}
+              height={95}
             />
           </Grid>
           <Grid xs={12} item>

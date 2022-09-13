@@ -8,8 +8,11 @@ import {
   List,
   Toolbar,
 } from '@mui/material';
-// import { Image, NavSection } from 'core/components';
 import SidebarConfig from './sidebarConfig';
+import Image from 'core/components/image';
+import { images } from 'core/assets';
+import Icons from 'core/components/icons/getIcons';
+import NavSection from 'core/components/nav-section';
 
 export const DRAWER_WIDTH = 240;
 export const DRAWER_CLOSED_WIDTH = 55;
@@ -57,16 +60,16 @@ export function SideBar({ open, onCloseSidebar }: PropsSideBar) {
           <Grid item sm>
             <Grid container justifyContent='center'>
               <Grid item>
-                {/* <Image
+                <Image
                   sx={{ width: open ? 120 : 0 }}
-                  src={system.logoTextRow}
-                /> */}
+                  src={images.logo.default}
+                />
               </Grid>
             </Grid>
           </Grid>
           <Grid item>
             <IconButton onClick={onCloseSidebar}>
-              {/* <icons.chevronLeft /> */}
+              <Icons size='22' name='HambergerMenu' />
             </IconButton>
           </Grid>
         </Grid>
@@ -75,13 +78,13 @@ export function SideBar({ open, onCloseSidebar }: PropsSideBar) {
       {!open && (
         <Grid container justifyContent='center' sx={{ p: 1 }}>
           <Grid item>
-            {/* <Image sx={{ width: 30 }} src={system.logo} /> */}
+            <Image sx={{ width: 30 }} src={images.logo.default} />
           </Grid>
         </Grid>
       )}
       <Divider />
       <List component='nav'>
-        {/* <NavSection navConfig={SidebarConfig} /> */}
+        <NavSection navConfig={SidebarConfig} />
       </List>
     </Drawer>
   );

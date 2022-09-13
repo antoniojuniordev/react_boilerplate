@@ -12,7 +12,19 @@ const sidebarConfig: Array<PropsSideBarConfig> = [
   {
     title: 'Início',
     path: '/dashboard',
-    icon: <Icons size='22' name='Eye' />,
+    icon: <Icons size='22' name='Home' />,
+  },
+  {
+    title: 'Perfil',
+    path: '/perfil',
+    icon: <Icons size='22' name='User' />,
+    children: [
+      {
+        title: 'Usuário',
+        path: '/user',
+        icon: <Icons size='22' name='UserAdd' />,
+      },
+    ],
   },
 ];
 
