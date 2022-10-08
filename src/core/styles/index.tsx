@@ -18,13 +18,13 @@ export default function ThemeConfig({ children }: PropsThemeConfig) {
     () => ({
       palette,
       typography: {
-        fontFamily: 'Poppins',
+        fontFamily: 'Poppins, sans-serif',
       },
       components: {
         MuiCssBaseline: {
           styleOverrides: `
             @font-face {
-              font-family: 'Poppins';
+              font-family: 'Poppins, sans-serif';
               font-style: normal;
               font-display: swap;
               font-weight: 400;

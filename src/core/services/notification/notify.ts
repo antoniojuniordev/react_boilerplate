@@ -11,11 +11,11 @@ export interface NotifyProps {
 
 const notify = ({ translate }: TranslateProps) => ({
   success(message: string) {
-    if (toast) return toast.success(translate(message), { duration: 90000 });
+    if (toast) return toast.success(translate(message), { duration: 5000 });
     return message;
   },
   error(message: string) {
-    return toast.error(translate(message), { duration: 90000 });
+    return toast.error(translate(message), { duration: 5000 });
   },
   info(message: string) {
     return toast(translate(message), {
