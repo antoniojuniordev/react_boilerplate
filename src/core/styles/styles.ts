@@ -1,65 +1,59 @@
-import { createGlobalStyle } from 'styled-components';
-import {
-  PoppinsMedium,
-  PoppinsRegular,
-  PoppinsSemiBold,
-} from 'core/assets/fonts';
+import { createGlobalStyle, css } from 'styled-components'
+
+import { Poppins300, Poppins600, PoppinsRegular } from 'core/assets/fonts'
+import margin from './margin'
+import padding from './padding'
+import text from './text'
 
 export const GlobalStyle = createGlobalStyle`
-  body {
-    @font-face {
-        font-family: 'PoppinsRegular';
-        src: url(${PoppinsRegular}) format('truetype');
-    }
-    @font-face {
-        font-family: 'PoppinsMedium';
-        src: url(${PoppinsMedium}) format('truetype');
-    }
-    @font-face {
-        font-family: 'PoppinsSemiBold';
-        src: url(${PoppinsSemiBold}) format('truetype');
-    }
-    * {
-        font-family: 'PoppinsRegular';
-    }
-    html, body, div, span, applet, object, iframe,
-    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-    a, abbr, acronym, address, big, cite, code,
-    del, dfn, em, img, ins, kbd, q, s, samp,
-    small, strike, strong, sub, sup, tt, var,
-    b, u, i, center,
-    dl, dt, dd, ol, ul, li,
-    fieldset, form, label, legend,
-    table, caption, tbody, tfoot, thead, tr, th, td,
-    article, aside, canvas, details, embed, 
-    figure, figcaption, footer, header, hgroup, 
-    menu, nav, output, ruby, section, summary,
-    time, mark, audio, video {
-      margin: 0;
-      padding: 0;
-      border: 0;
-    }
-    article, aside, details, figcaption, figure, 
-    footer, header, hgroup, menu, nav, section {
-      display: block;
-    }
-    body {
-      line-height: 1;
-    }
-    ol, ul {
-      list-style: none;
-    }
-    blockquote, q {
-      quotes: none;
-    }
-    blockquote:before, blockquote:after,
-    q:before, q:after {
-      content: '';
-      content: none;
-    }
-    table {
-      border-collapse: collapse;
-      border-spacing: 0;
-    }
+  @font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: local('Poppins Light'), local('Poppins-Light'),
+        url(${Poppins300}) format('woff2');
   }
-`;
+
+  @font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Poppins Regular'), local('Poppins-Regular'),
+        url(${PoppinsRegular}) format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: local('Poppins SemiBold'), local('Poppins-SemiBold'),
+        url(${Poppins600}) format('woff2');
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
+  }
+
+  ${({ theme }) => css`
+    body {
+      font-family: ${theme.font.family};
+      font-size: ${theme.font.sizes.xxsmall};
+      font-weight: ${theme.font.normal};
+    }
+  `}
+
+  ${margin}
+
+  ${padding}
+  
+  ${text}
+`

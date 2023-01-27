@@ -1,15 +1,8 @@
-import { Navigate, Route } from 'react-router-dom';
+export function Auth() {
+  const test = true
 
-interface Props {
-  component: React.FC;
-  path?: string;
-}
-export default function Auth({ component: Component, path }: Props) {
-  const token = window.localStorage.getItem('token');
-
-  if (!token) return <Navigate to='/' />;
-
-  if (path) return <Route path={path} element={<Component />} />;
-
-  return <Component />;
+  if (test) {
+    return true
+  }
+  return false
 }

@@ -1,15 +1,16 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react'
 
-import { BaseLayout } from 'core/layouts/Base';
+import { BaseAuthLayout } from 'core/layouts/BaseAuth'
 
-const Login = lazy(() => import('./pages/login'));
-
-import NoAuth from 'core/routes/guards/NoAuth';
+const Login = lazy(() => import('./pages/login'))
+// const NewUser = lazy(() => import('./pages/new-user'))
+// const ResetPassword = lazy(() => import('./pages/reset-password'))
+// const NewPassword = lazy(() => import('./pages/new-password'))
 
 export default [
   {
     path: '/',
-    element: <NoAuth component={BaseLayout} />,
+    element: <BaseAuthLayout />,
     children: [
       {
         path: '',
@@ -17,8 +18,32 @@ export default [
           <Suspense fallback={<>...</>}>
             <Login />
           </Suspense>
-        ),
-      },
-    ],
-  },
-];
+        )
+      }
+      // {
+      //   path: 'new',
+      //   element: (
+      //     <Suspense fallback={<>...</>}>
+      //       <NewUser />
+      //     </Suspense>
+      //   )
+      // },
+      // {
+      //   path: 'reset-password',
+      //   element: (
+      //     <Suspense fallback={<>...</>}>
+      //       <ResetPassword />
+      //     </Suspense>
+      //   )
+      // },
+      // {
+      //   path: 'new-password',
+      //   element: (
+      //     <Suspense fallback={<>...</>}>
+      //       <NewPassword />
+      //     </Suspense>
+      //   )
+      // }
+    ]
+  }
+]

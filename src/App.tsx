@@ -1,19 +1,16 @@
-import Routers from 'core/routes';
-import theme, { colorsLight, colorsDark } from 'core/styles/theme';
-import { GlobalStyle } from 'core/styles/styles';
+import { ThemeProvider } from 'styled-components'
 
-import { ThemeProvider } from 'styled-components';
+import theme from 'core/styles/theme'
+import { Notification } from 'core/services/notification'
+import { GlobalStyle } from 'core/styles/styles'
+import Routers from 'core/routes'
 
 export default function App() {
-  const isDarkTheme = false;
   return (
-    <ThemeProvider
-      theme={
-        isDarkTheme ? { ...theme, ...colorsLight } : { ...theme, ...colorsDark }
-      }
-    >
+    <ThemeProvider theme={theme}>
+      <Notification />
       <GlobalStyle />
       <Routers />
     </ThemeProvider>
-  );
+  )
 }
